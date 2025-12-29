@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import { Form } from './Form';
+import { GeneralForm } from './components/General_Form';
+import { EducationForm } from './components/Education_Form';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -8,7 +9,8 @@ function App() {
   return (
     <>
       <h1>Cv/Resume</h1>
-      <Form/>
+      <GeneralForm/>
+      <EducationForm/>
     </>
   )
 }
