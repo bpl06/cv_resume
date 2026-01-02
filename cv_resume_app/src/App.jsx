@@ -2,15 +2,24 @@ import { useState } from 'react'
 import './App.css'
 import { GeneralForm } from './components/General_Form';
 import { EducationForm } from './components/Education_Form';
+import { ExperienceForm } from './components/Experience_Form';
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <h1>Cv/Resume</h1>
-      <GeneralForm/>
-      <EducationForm/>
+      <div className='main-container'>
+        <div className='form-container'>
+          <h1>Cv Generator</h1>
+          <GeneralForm/>
+          <EducationForm/>
+          <ExperienceForm/>
+        </div>
+        <div className='preview-container'>
+    
+        </div>
+      </div>
     </>
   )
 }

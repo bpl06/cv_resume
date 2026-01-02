@@ -1,24 +1,26 @@
 import { useState } from 'react';
 import '../styles/form.css';
+import { InputWithLabel } from './form';
 export function GeneralForm() {
-  // const [input, setInput] = useState('');
+
   return (
     <>
-      <h1>Personal Info</h1>
-      <div>
+      <div className='form-wrapper'>
+        <h1>Personal Info</h1>
         <form action="post" className='form'>
-          <div className='form-field'>
-            <label htmlFor='name'>Name: </label>
-            <input type="text" id='name' name='name'/>
-          </div>
-          <div className='form-field'>
-            <label htmlFor='email'>Email: </label>
-            <input type="text" id='email' name='email'/>
-          </div>
-          <div className='form-field'>
-            <label htmlFor='phone'>Phone: </label>
-            <input type="text" id='phone' name='phone'/>
-          </div>
+          <InputWithLabel 
+            htmlFor='name'
+            desc='Name'
+          />
+          <InputWithLabel 
+            htmlFor='email'
+            desc='Email'
+          />
+          <InputWithLabel 
+            htmlFor='phone'
+            inputType='tel'
+            desc='Phone'
+          />          
         </form>
       </div>
     </>

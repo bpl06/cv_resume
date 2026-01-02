@@ -5,3 +5,11 @@
   text-align: center;
 }
 
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.preview-container {
+  background-color: white;
+}
