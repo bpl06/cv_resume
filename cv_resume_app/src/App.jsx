@@ -3,8 +3,14 @@ import './App.css'
 import { GeneralForm } from './components/General_Form';
 import { EducationForm } from './components/Education_Form';
 import { ExperienceForm } from './components/Experience_Form';
+import { setInitialStorage } from './storage';
+import { useEffect } from 'react';
 
 function App() {
+  useEffect(() => {
+    setInitialStorage();
+  },[]);
+  
   const [count, setCount] = useState(0)
 
   return (

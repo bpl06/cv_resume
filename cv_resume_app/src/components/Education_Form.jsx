@@ -1,6 +1,17 @@
+import { use, useState } from "react"
 import { InputWithLabel } from "./form"
-
+import { updateItem } from "../storage"
 export function EducationForm() {
+  const [name, setName] = useState('');
+
+  const key = 'educationInfo';
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setName(value)
+    updateItem(key, value)
+  }
+
 
   return (
     <>
@@ -10,6 +21,7 @@ export function EducationForm() {
           <InputWithLabel
             htmlFor='school'
             desc='School'
+            onChange={handleChange}
           />
           <InputWithLabel
             htmlFor='degree'

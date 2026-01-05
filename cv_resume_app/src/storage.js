@@ -1,26 +1,32 @@
-//THIS FILE IS NOT RUNNING IN DEV ENVIRONMENT, FIND OUT WHY
+export function setInitialStorage() {
+  if (!localStorage.getItem('personalInfo')) {
+    localStorage.setItem('personalInfo', JSON.stringify({
+      name: '',
+      email: '',
+      phone: ''
+    }))
+  }
+  if (!localStorage.getItem('educationInfo')) {
+    localStorage.setItem('educationInfo', JSON.stringify({
+      school: '',
+      degree: '', 
+      startDate: '',
+      endDate: ''
+    }))
+  }
+  if (!localStorage.getItem('experienceInfo')) {
+    localStorage.setItem('experienceInfo', JSON.stringify({
+      company: '',
+      position: '',
+      responsibilities: ''
+    }))
+  }
+} 
 
-const personalInfo = {
-  name: '',
-  email: '',
-  phone: ''
+
+
+export function updateItem(key, value) {
+  let item = JSON.parse(localStorage.getItem(key));
+  item.name = value;
+  localStorage.setItem(key, JSON.stringify(item));
 }
-
-const experienceInfo = {
-  school: '',
-  degree: '',
-  startDate: '',
-  endDate: ''
-}
-
-const educationInfo = {
-  company: '',
-  position: '',
-  responsibilities: ''
-}
-
-console.log('omg why doesnt it work')
-
-localStorage.set('personalInfo', JSON.stringify(personalInfo))
-localStorage.set('experienceInfo', JSON.stringify(experienceInfo))
-localStorage.set('educationInfo', JSON.stringify(educationInfo))
