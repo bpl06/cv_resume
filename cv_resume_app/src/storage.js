@@ -1,3 +1,8 @@
+export const PERSONAL_KEY = 'personalInfo';
+export const EDUCATION_KEY = 'educationInfo';
+export const EXPERIENCE_KEY = 'experienceInfo';
+
+
 export function setInitialStorage() {
   if (!localStorage.getItem('personalInfo')) {
     localStorage.setItem('personalInfo', JSON.stringify({
@@ -25,8 +30,8 @@ export function setInitialStorage() {
 
 
 
-export function updateItem(key, value) {
+export function updateItem(key, value, prop) {
   let item = JSON.parse(localStorage.getItem(key));
-  item.name = value;
+  item[prop] = value; //use brackets for prop because it's value is coming from a variable;
   localStorage.setItem(key, JSON.stringify(item));
 }
