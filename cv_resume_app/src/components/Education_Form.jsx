@@ -1,23 +1,7 @@
 import { useState } from "react"
-import { InputWithLabel } from "./form"
+import { InputWithLabel } from "./Form"
 import { updateItem, EDUCATION_KEY } from "../storage"
-export function EducationForm() {
-  const [education, setEducation] = useState({
-    name: '',
-    degree: '',
-    startDate: '',
-    endDate: ''
-  });
-
-  const handleChange = (property, event) => {
-    const value = event.target.value;
-    setEducation((prev) => ({
-      ...prev,
-      [property]: value //property in brackets since value is from variable
-    }))
-    updateItem(EDUCATION_KEY, value, property)
-  }
-
+export function EducationForm({ onChange, setEducation}) {
 
   return (
     <>
@@ -27,22 +11,22 @@ export function EducationForm() {
           <InputWithLabel
             htmlFor='school'
             desc='School'
-            onChange={(event) => (handleChange('school', event))}
+            onChange={(event) => onChange('school', event, EDUCATION_KEY, setEducation)}
           />
           <InputWithLabel
             htmlFor='degree'
             desc='Degree'
-            onChange={(event) => (handleChange('degree', event))}
+            onChange={(event) => onChange('degree', event, EDUCATION_KEY, setEducation)}
           />
           <InputWithLabel
             htmlFor='startDate'
             desc='Start Date'
-            onChange={(event) => (handleChange('startDate', event))}
+            onChange={(event) => onChange('startDate', event, EDUCATION_KEY, setEducation)}
           />
           <InputWithLabel
             htmlFor='endDate'
             desc='End Date'
-            onChange={(event) => (handleChange('endDate', event))}
+            onChange={(event) => onChange('endDate', event, EDUCATION_KEY, setEducation)}
           />
         </form>
       </div>

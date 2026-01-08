@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import './App.css'
-import { GeneralForm } from './components/General_Form';
+import { PersonalForm } from './components/Personal_Form';
 import { EducationForm } from './components/Education_Form';
 import { ExperienceForm } from './components/Experience_Form';
-import { setInitialStorage } from './storage';
+import { setInitialStorage, updateItem, getItem } from './storage';
+import { Preview } from './components/Preview';
 import { useEffect } from 'react';
 
 function App() {
@@ -11,19 +12,58 @@ function App() {
     setInitialStorage();
   },[]);
   
-  const [count, setCount] = useState(0)
+  const [personal, setPersonal] = useState({
+    name: '',
+    email: '', 
+    phone: ''
+  })
+
+  const [experience, setExperience] = useState({
+    company: '',
+    position: '',
+    responsibilities: ''
+  })
+
+  const [education, setEducation] = useState({
+    name: '',
+    degree: '',
+    startDate: '',
+    endDate: ''
+  });
+
+    const handleChange = (property, event, key, setState) => {
+      const value = event.target.value;
+      setState((prev) => ({
+        ...prev,
+        [property]: value
+      }))
+      updateItem(key, value, property)
+    }
 
   return (
     <>
       <div className='main-container'>
         <div className='form-container'>
           <h1>Cv Generator</h1>
-          <GeneralForm/>
-          <EducationForm/>
-          <ExperienceForm/>
+          <PersonalForm 
+            onChange={handleChange} 
+            setPersonal={setPersonal}
+          />
+          <EducationForm
+            onChange={handleChange}
+            setEducation={setEducation}
+          />
+          <ExperienceForm
+            onChange={handleChange}
+            setExperience={setExperience}
+          />
         </div>
         <div className='preview-container'>
-    
+          <Preview
+          personal={personal}
+          experience={experience}
+          education={education}
+          />
         </div>
       </div>
     </>

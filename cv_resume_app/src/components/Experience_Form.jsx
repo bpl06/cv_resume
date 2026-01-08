@@ -1,21 +1,7 @@
 import { useState } from 'react';
-import { InputWithLabel } from './form';
+import { InputWithLabel } from './Form';
 import { updateItem, EXPERIENCE_KEY } from '../storage';
-export function ExperienceForm() {
-  const [experience, setExperience] = useState({
-    company: '',
-    position: '',
-    responsibilities: ''
-  })
-
-  const handleChange = (property, event) => {
-    const value = event.target.value;
-    setExperience((prev) => ({
-      ...prev,
-      [property]: value
-    }))
-    updateItem(EXPERIENCE_KEY, value, property)
-  }
+export function ExperienceForm({ onChange, setExperience}) {
 
   return ( 
     <>
@@ -25,12 +11,12 @@ export function ExperienceForm() {
           <InputWithLabel
             htmlFor='company'
             desc='Company'
-            onChange={(event) => (handleChange('company', event))}
+            onChange={(event) => onChange('company', event, EXPERIENCE_KEY, setExperience)}
           />
           <InputWithLabel 
             htmlFor='position'
             desc='Position'
-            onChange={(event) => (handleChange('position', event))}
+            onChange={(event) => onChange('position', event, EXPERIENCE_KEY, setExperience)}
           />
           <div className='form-field'>
             <label htmlFor="responsibilities">Responisibilites</label>
@@ -38,7 +24,7 @@ export function ExperienceForm() {
               id='responsibilities' 
               name='responsibilities' 
               placeholder='List Responsibilities'
-              onChange={(event) => (handleChange('responsibilities', event))}
+              onChange={(event) => onChange('responsibilities', event, EXPERIENCE_KEY, setExperience)}
             />
           </div>
         </form>
