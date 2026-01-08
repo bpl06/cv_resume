@@ -47,14 +47,17 @@ function App() {
           <h1>Cv Generator</h1>
           <PersonalForm 
             onChange={handleChange} 
+            personal={personal}
             setPersonal={setPersonal}
           />
           <EducationForm
             onChange={handleChange}
+            education={education}
             setEducation={setEducation}
           />
           <ExperienceForm
             onChange={handleChange}
+            experience={experience}
             setExperience={setExperience}
           />
         </div>

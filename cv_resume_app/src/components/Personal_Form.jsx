@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import '../styles/form.css';
 import { InputWithLabel } from './Form';
-import { updateItem, PERSONAL_KEY } from '../storage';
-export function PersonalForm({ onChange, setPersonal }) {
+import { updateItem, PERSONAL_KEY, getItem } from '../storage';
+export function PersonalForm({ onChange, personal, setPersonal }) {
 
   return (
     <>
@@ -12,17 +12,20 @@ export function PersonalForm({ onChange, setPersonal }) {
           <InputWithLabel 
             htmlFor='name'
             desc='Name'
+            value={personal.name ? personal.name : getItem(PERSONAL_KEY, 'name')}
             onChange={(event) => onChange('name', event, PERSONAL_KEY, setPersonal)}
           />
           <InputWithLabel 
             htmlFor='email'
             desc='Email'
+            value={personal.email ? personal.email : getItem(PERSONAL_KEY, 'email')}
             onChange={(event) => onChange('email', event, PERSONAL_KEY, setPersonal)}
           />
           <InputWithLabel 
             htmlFor='phone'
             inputType='tel'
             desc='Phone'
+            value={personal.phone ? personal.phone : getItem(PERSONAL_KEY, 'phone')}
             onChange={(event) => onChange('phone', event, PERSONAL_KEY, setPersonal)}
           />          
         </form>
