@@ -2,11 +2,11 @@ import { useState } from 'react';
 import '../styles/form.css';
 import { InputWithLabel } from './Form';
 import { updateItem, PERSONAL_KEY, getItem } from '../storage';
-export function PersonalForm({ onChange, personal, setPersonal }) {
+export function PersonalForm({ onChange, personal, setPersonal, isVisible }) {
 
   return (
     <>
-      <div className='form-wrapper'>
+      {isVisible.personal && <div id='personal-form' className='form-wrapper'>
         <h1>Personal Info</h1>
         <form action="post" className='form'>
           <InputWithLabel 
@@ -29,7 +29,7 @@ export function PersonalForm({ onChange, personal, setPersonal }) {
             onChange={(event) => onChange('phone', event, PERSONAL_KEY, setPersonal)}
           />          
         </form>
-      </div>
+      </div>}
     </>
   )
 } 

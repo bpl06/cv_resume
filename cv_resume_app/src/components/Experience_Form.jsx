@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { InputWithLabel } from './Form';
 import { updateItem, EXPERIENCE_KEY, getItem } from '../storage';
-export function ExperienceForm({ onChange, experience, setExperience}) {
+export function ExperienceForm({ onChange, experience, setExperience, isVisible}) {
 
   return ( 
     <>
-      <div className='form-wrapper'>
+      {isVisible.experience && <div id='experience-form' className='form-wrapper'>
         <h3>Experience</h3>
         <form action='post' className='form'>
           <InputWithLabel
@@ -31,7 +31,7 @@ export function ExperienceForm({ onChange, experience, setExperience}) {
             />
           </div>
         </form>
-      </div>   
+      </div>}
     </>
   )
 }

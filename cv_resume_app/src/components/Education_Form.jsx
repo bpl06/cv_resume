@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { InputWithLabel } from "./Form"
 import { updateItem, EDUCATION_KEY, getItem } from "../storage"
-export function EducationForm({ onChange, education, setEducation}) {
+export function EducationForm({ onChange, education, setEducation, isVisible}) {
 
   return (
     <>
-      <div className="form-wrapper">
+      {isVisible.education && <div id='education-form' className="form-wrapper">
         <h2>Education</h2>
         <form action="post" className='form'>
           <InputWithLabel
@@ -33,7 +33,7 @@ export function EducationForm({ onChange, education, setEducation}) {
             onChange={(event) => onChange('endDate', event, EDUCATION_KEY, setEducation)}
           />
         </form>
-      </div>
+      </div>}
     </>
   )
 }

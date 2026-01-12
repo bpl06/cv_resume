@@ -1,0 +1,10 @@
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.nav-icon {
+  width: 36px;
+  height: 36px;
+}

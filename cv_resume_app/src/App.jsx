@@ -5,6 +5,7 @@ import { EducationForm } from './components/Education_Form';
 import { ExperienceForm } from './components/Experience_Form';
 import { setInitialStorage, updateItem, getItem } from './storage';
 import { Preview } from './components/Preview';
+import { Navbar } from './components/Navbar';
 import { useEffect } from 'react';
 
 function App() {
@@ -31,34 +32,64 @@ function App() {
     endDate: ''
   });
 
-    const handleChange = (property, event, key, setState) => {
-      const value = event.target.value;
-      setState((prev) => ({
-        ...prev,
-        [property]: value
-      }))
-      updateItem(key, value, property)
-    }
+  const handleChange = (property, event, key, setState) => {
+    const value = event.target.value;
+    setState((prev) => ({
+      ...prev,
+      [property]: value
+    }))
+    updateItem(key, value, property)
+  }
+
+  const [isVisible, setIsVisible] = useState({
+    personal: true,
+    experience: false,
+    education: false
+  });
+  
+  const toggleVisible = (property, prop2, prop3) => { //is changing isVisible properties but is not updating DOM. 
+    console.log('yoooo')
+    setIsVisible((prev) => ({
+      ...prev,
+      
+      [property]: !isVisible[property],
+      [prop2]: false,
+      [prop3]: false
+    }))
+    console.log(isVisible.personal)
+    console.log(isVisible.experience)
+    console.log(isVisible.education)
+  }
+
 
   return (
     <>
       <div className='main-container'>
+        <div className='nav-container'>
+          <Navbar
+          toggleVisible={toggleVisible}
+          />
+        </div>
         <div className='form-container'>
           <h1>Cv Generator</h1>
+
           <PersonalForm 
             onChange={handleChange} 
             personal={personal}
             setPersonal={setPersonal}
+            isVisible={isVisible}
           />
           <EducationForm
             onChange={handleChange}
             education={education}
             setEducation={setEducation}
+            isVisible={isVisible}
           />
           <ExperienceForm
             onChange={handleChange}
             experience={experience}
             setExperience={setExperience}
+            isVisible={isVisible}
           />
         </div>
         <div className='preview-container'>

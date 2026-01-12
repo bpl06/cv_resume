@@ -1,15 +1,31 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  margin: 10px;
   text-align: center;
+}
+
+body {
+  margin: 0;
 }
 
 .main-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.01fr 1fr 1fr;
 }
 
+.nav-container {
+  grid-column: 1/2;
+  display: flex;
+  flex-direction: column;
+  background-color: navy;
+}
+
+.form-container {
+  grid-column: 2/3;
+  background-color: peru;
+
+}
 .preview-container {
   background-color: white;
+  grid-column: 3/4;
 }
+
