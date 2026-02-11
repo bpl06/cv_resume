@@ -4,4 +4,10 @@
   align-items: center;
 }
 
+.active-display {
+  display: flex;
+}
 
+.nonActive-display {
+  display: none;
+}

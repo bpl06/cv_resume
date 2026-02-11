@@ -3,10 +3,9 @@ import './App.css'
 import { PersonalForm } from './components/Personal_Form';
 import { EducationForm } from './components/Education_Form';
 import { ExperienceForm } from './components/Experience_Form';
-import { updateItem } from './storage';
+import { updateArrayItem, updateItem, getArray, EDUCATION_KEY } from './storage';
 import { Preview } from './components/Preview';
 import { Navbar } from './components/Navbar';
-import { setArrayItem, EDUCATION_KEY } from './storage';
 import { EducationList } from './components/Education_List';
 
 function App() {
@@ -22,7 +21,7 @@ function App() {
     responsibilities: ''
   })
 
-  const [education, setEducation] = useState([]);
+  const [education, setEducation] = useState(getArray(EDUCATION_KEY));
 
   const [draftEducation, setDraftEducation] = useState({
     school: '',
@@ -31,7 +30,13 @@ function App() {
     endDate: ''
   })
 
-  const handleChange = (property, event, key, setState) => {
+  const [isVisible, setIsVisible] = useState({ //need to make education the educationList and not EducationForm
+    personal: true,
+    experience: false,
+    education: false
+  });
+
+  const handleChange = (property, event, key, setState) => { // only for personal form
     const value = event.target.value;
     setState((prev) => ({
       ...prev,
@@ -40,32 +45,17 @@ function App() {
     updateItem(key, value, property)
   }
 
-
-
-    const handleSubmit = (event, property, key, setState) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget); //gathers form data from closest form
-    const data = Object.fromEntries(formData); //converts from data to object
-    data.id = crypto.randomUUID();
-    console.log(education)
-    console.log(data)
-    setEducation(prev => [
+  const handleArrayChange = (property, event, key, state, setState,) => {
+    const value = event.target.value;
+    const id = event.target.id;
+    setState((prev) => ({
       ...prev,
-      data
-    ])
-    setArrayItem(EDUCATION_KEY, data)
-    console.log(education)
-
+      [property]: value
+    }))
+    // updateArrayItem(key, value, property, draftEducation.id)
   }
-
-  const [isVisible, setIsVisible] = useState({ //need to make education the educationList and not EducationForm
-    personal: true,
-    experience: false,
-    education: false
-  });
   
   const toggleVisible = (property, prop2, prop3) => { //is changing isVisible properties but is not updating DOM. Fixed----
-    console.log('yoooo')
     setIsVisible((prev) => ({
       ...prev,
       
@@ -93,15 +83,17 @@ function App() {
             setPersonal={setPersonal}
             isVisible={isVisible}
           />
-          <EducationForm
-            onChange={handleChange}
-            education={education}
-            draftEducation={draftEducation}
-            setDraftEducation={setDraftEducation}
-            setEducation={setEducation}
-            isVisible={isVisible}
-            onSubmit={handleSubmit}
-          />
+          {isVisible.education && <div id='education-form' className="form-wrapper">
+            <h2>Education</h2>
+              <EducationList
+              onChange={handleArrayChange}
+              education={education}
+              draftEducation={draftEducation}
+              setDraftEducation={setDraftEducation}
+              setEducation={setEducation}
+              isVisible={isVisible}
+              />
+          </div>}
           <ExperienceForm
             onChange={handleChange}
             experience={experience}
@@ -115,7 +107,7 @@ function App() {
           experience={experience}
           education={education}
           />
-          <EducationList/>
+
         </div>
       </div>
     </>

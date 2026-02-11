@@ -1,41 +1,47 @@
-import { EDUCATION_KEY } from "../storage";
+import { EDUCATION_KEY, setArrayItem, updateObject } from "../storage";
 
-export function CloseSubmitButtons({ education, setEducation }) {
+export function CloseSubmitButtons({ education, setEducation, draftEducation, selectedEducation, setSelectedEducation }) {
  
-  const handleCloseClick = (event) => {
+  const handleClose = (event) => { //THIS WORKS NOW
     event.preventDefault();
-  }
-
-  const handleSubmit = (event, property, key, setState) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData);
-
-    console.log(data)
-    setEducation(prev => [
-      ...prev,
-      { id: crypto.randomUUID(),
-        school: event.school.value,
-        degree: event.degree.value,
-        startDate: event.startDate.value,
-        endDate: event.endDate.value
-      }
-    ])
+    setSelectedEducation(false)
+    setEducation(prev => 
+      prev.map(item => ({
+        ...item,
+        display: true
+      }))
+    )  
     console.log(education)
   }
 
-
-
-
+  const handleSubmit = (event, property, key, setState) => { //NOT SETTING ALL EDUCATINO ITEMS BACK TO VISIBLE. FIX IT
+    event.preventDefault();                               
+    if (draftEducation.id) {
+      setEducation(prev => ([
+        ...prev,
+        {...draftEducation, display: true}
+      ]))
+      updateObject(EDUCATION_KEY, {...draftEducation, display: true}, draftEducation.id) 
+    }
+    else {
+      draftEducation.id = crypto.randomUUID();
+      setEducation(prev => ([
+        ...prev,
+        {...draftEducation, display: true}
+      ]))
+      setArrayItem(EDUCATION_KEY, {...draftEducation, display: true})
+    }
+  }
+  
   return (
     <>
       <button className="close-button" type="button"
-      onClick={(event) => (handleCloseClick(event))}
+      onClick={(event) => (handleClose(event))}
       >
       Close
       </button>
       <button className="submit-button" type="submit"
-      // onClick={(event) => (handleSubmitClick(event))}
+      onClick={(event) => (handleSubmit(event))}
       
       >
       Submit
