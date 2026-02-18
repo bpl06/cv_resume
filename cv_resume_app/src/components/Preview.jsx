@@ -17,30 +17,36 @@ export function Preview({ personal, experience, education}) {
           {personal.phone ? personal.phone : getItem(PERSONAL_KEY, 'phone')}
         </p>
       </div>
-      <div className='education-info'>
-        <p className='preview-text'>
-          {education.school ? education.school : getItem(EDUCATION_KEY, 'school')}
-        </p>
-        <p className="preview-text">
-          {education.degree ? education.degree : getItem(EDUCATION_KEY, 'degree')}
-        </p>
-        <p className="preview-text">
-          {education.startDate ? education.startDate : getItem(EDUCATION_KEY, 'startDate')}
-        </p>
-        <p className="preview-text">
-          {education.endDate ? education.endDate : getItem(EDUCATION_KEY, 'endDate')}
-        </p>
+      <div className='resume-container'>
+        <div className='resume-header'>
+          <h1 className='header-text'>Education</h1>
+        </div>
+        <hr></hr>
+        <div className='resume-section'>
+          {education.map(x => 
+            <>
+              <p key={crypto.randomUUID()} className="preview-text">{x.name}</p>
+              <p key={crypto.randomUUID()} className="preview-text">{x.degree}</p>
+              <p key={crypto.randomUUID()} className="preview-text">{x.startDate}</p>
+              <p key={crypto.randomUUID()} className="preview-text">{x.endDate}</p>
+            </>
+          )}
       </div>
-      <div className="experience-info">
-        <p className="preview-text">
-          {experience.company ? experience.company : getItem(EXPERIENCE_KEY, 'company')}
-        </p>
-        <p className="preview-text">
-          {experience.position ? experience.position : getItem(EXPERIENCE_KEY, 'position')}
-        </p>
-        <p className="preview-text">
-          {experience.responsibilities ? experience.responsibilities : getItem(EXPERIENCE_KEY, 'responsibilities')}
-        </p>
+      </div>
+      <div className="resume-container">
+        <div className='resume-header'>
+          <h1 className='header-text'>Experience</h1>
+        </div>
+        <hr></hr>
+        <div className='resume-section'>
+          {experience.map(x =>
+            <>
+              <p key={crypto.randomUUID()} className="preview-text">{x.name}</p>
+              <p key={crypto.randomUUID()} className="preview-text">{x.position}</p>
+              <p key={crypto.randomUUID()} className="preview-text">{x.responsibilities}</p>
+            </>
+          )}
+        </div>
       </div>
     </>
   )

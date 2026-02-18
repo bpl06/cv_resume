@@ -1,8 +1,30 @@
 .preview-container {
   display: grid;
-  grid-template-columns: .5fr 1fr;
+  grid-template-rows: .5fr 1fr, 1fr;
+  padding: 30px;
 }
 
 .preview-text {
   color: black;
+}
+
+.header-text {
+  color: black;
+  font-size: 20px;
+}
+
+.resume-container {
+  display: flex;
+
+
+  align-items: start;
+  justify-content: start;
+}
+
+hr {
+  border: none; /* Remove default border */
+  height: 1px; /* Set the height (thickness) */
+  background-color: #333; /* Set the color */
+  width: 100%; /* Set the width (e.g., 50% of its container) */
+  margin: 20px auto; /* Center the line horizontally with margin */
 }

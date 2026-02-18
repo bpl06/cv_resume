@@ -3,7 +3,7 @@ export const EDUCATION_KEY = 'educationInfo';
 export const EXPERIENCE_KEY = 'experienceInfo';
 
 export function setInitialStorage() {
-  console.log('it ran')
+  console.log('Initial Storage Set')
   if (!localStorage.getItem('personalInfo')) {
     localStorage.setItem('personalInfo', JSON.stringify({
       name: '',
@@ -16,7 +16,7 @@ export function setInitialStorage() {
     {
       id: crypto.randomUUID(),
       display: true,
-      school: 'Kings Canyon',
+      name: 'Kings Canyon',
       degree: 'asdf', 
       startDate: 'asdf',
       endDate: 'asdf'
@@ -24,7 +24,7 @@ export function setInitialStorage() {
     {
       id: crypto.randomUUID(),
       display: true,
-      school: 'Storm Point',
+      name: 'Storm Point',
       degree: 'Goober', 
       startDate: '1234',
       endDate: '1895'
@@ -33,9 +33,11 @@ export function setInitialStorage() {
   }
   if (!localStorage.getItem('experienceInfo')) {
     localStorage.setItem('experienceInfo', JSON.stringify([{
-      company: '',
-      position: '',
-      responsibilities: ''
+      id: crypto.randomUUID(),
+      display: true,
+      name: 'Burger King',
+      position: 'The King',
+      responsibilities: 'Run shit on the daily'
     }]))
   }
 } 
@@ -78,13 +80,9 @@ export function updateArrayItem(key, value, prop, id) {
 
 export function updateObject(key, updatedObject, id) {
   let item = JSON.parse(localStorage.getItem(key))
-  const newArr = item.map(x => {
-    if (x.id == id) {
-      return updatedObject
-    }
-    return x;
-  })
-  console.log(newArr)
+  const newArr = item.map(x => 
+    x.id === id ? updatedObject : x
+  )
   localStorage.setItem(key, JSON.stringify(newArr))
 }
 

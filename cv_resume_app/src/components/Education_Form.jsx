@@ -1,8 +1,7 @@
-import { useState } from "react"
 import { InputWithLabel } from "./Form"
-import { CloseSubmitButtons, AddButton } from "./Form_Buttons"
-import { updateItem, EDUCATION_KEY, getItem } from "../storage"
-export function EducationForm({ onChange, onSubmit, education, setEducation, draftEducation, setDraftEducation, isVisible, selectedEducation, setSelectedEducation }) {
+import { FormButtons } from "./Form_Buttons"
+import { EDUCATION_KEY } from "../storage"
+export function EducationForm({ onChange, onSubmit, form, setForm, draft, setDraft, setSelected }) {
 
   return (
     <>
@@ -10,33 +9,33 @@ export function EducationForm({ onChange, onSubmit, education, setEducation, dra
           <InputWithLabel
             htmlFor='school'
             desc='School'
-            value={draftEducation.school} //need to figure this out
-            onChange={(event) => onChange('school', event, EDUCATION_KEY, draftEducation, setDraftEducation)} // need to figure this out
+            value={draft.name}
+            onChange={(event) => onChange('name', event, EDUCATION_KEY, draft, setDraft)} 
           />
           <InputWithLabel
             htmlFor='degree'
             desc='Degree'
-            value={draftEducation.degree}
-            onChange={(event) => onChange('degree', event, EDUCATION_KEY, draftEducation, setDraftEducation)}
+            value={draft.degree}
+            onChange={(event) => onChange('degree', event, EDUCATION_KEY, draft, setDraft)}
           />
           <InputWithLabel
             htmlFor='startDate'
             desc='Start Date'
-            value={draftEducation.startDate}
-            onChange={(event) => onChange('startDate', event, EDUCATION_KEY, draftEducation, setDraftEducation)}
+            value={draft.startDate}
+            onChange={(event) => onChange('startDate', event, EDUCATION_KEY, draft, setDraft)}
           />
           <InputWithLabel
             htmlFor='endDate'
             desc='End Date'
-            value={draftEducation.endDate}
-            onChange={(event) => onChange('endDate', event, EDUCATION_KEY, draftEducation, setDraftEducation)}
+            value={draft.endDate}
+            onChange={(event) => onChange('endDate', event, EDUCATION_KEY, draft, setDraft)}
           />
-          <CloseSubmitButtons
-            education={education}
-            setEducation={setEducation}
-            draftEducation={draftEducation}
-            selectedEducation={selectedEducation}
-            setSelectedEducation={setSelectedEducation}
+          <FormButtons
+            form={form}
+            setList={setForm}
+            draft={draft}
+            setSelected={setSelected}
+            KEY={EDUCATION_KEY}
           />
         </form>
     </>

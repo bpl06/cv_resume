@@ -1,36 +1,45 @@
-import { EDUCATION_KEY, setArrayItem, updateObject } from "../storage";
+import { setArrayItem, updateObject } from "../storage";
 
-export function CloseSubmitButtons({ education, setEducation, draftEducation, selectedEducation, setSelectedEducation }) {
+export function FormButtons({ setList, draft, setSelected, KEY }) {
  
-  const handleClose = (event) => { //THIS WORKS NOW
+  const handleClose = (event) => {
     event.preventDefault();
-    setSelectedEducation(false)
-    setEducation(prev => 
+    setSelected(false)
+    setList(prev => 
       prev.map(item => ({
         ...item,
         display: true
       }))
     )  
-    console.log(education)
   }
 
-  const handleSubmit = (event, property, key, setState) => { //NOT SETTING ALL EDUCATINO ITEMS BACK TO VISIBLE. FIX IT
+  const handleSubmit = (event) => {
     event.preventDefault();                               
-    if (draftEducation.id) {
-      setEducation(prev => ([
-        ...prev,
-        {...draftEducation, display: true}
-      ]))
-      updateObject(EDUCATION_KEY, {...draftEducation, display: true}, draftEducation.id) 
+    if (draft.id) {
+      setList(prev => 
+        prev.map(item => 
+          item.id === draft.id ?
+          {...draft, display: true} :
+          item
+        )
+      )
+      updateObject(KEY, {...draft, display: true}, draft.id) 
     }
     else {
-      draftEducation.id = crypto.randomUUID();
-      setEducation(prev => ([
+      draft.id = crypto.randomUUID();
+      setList(prev => ([
         ...prev,
-        {...draftEducation, display: true}
+        {...draft, display: true}
       ]))
-      setArrayItem(EDUCATION_KEY, {...draftEducation, display: true})
+      setArrayItem(KEY, {...draft, display: true})
     }
+    setSelected(false)
+    setList(prev => 
+      prev.map(item => ({
+        ...item,
+        display: true
+      }))
+    )
   }
   
   return (
@@ -42,28 +51,9 @@ export function CloseSubmitButtons({ education, setEducation, draftEducation, se
       </button>
       <button className="submit-button" type="submit"
       onClick={(event) => (handleSubmit(event))}
-      
       >
       Submit
-
       </button>
-    </>
-  )
-}
-
-export function AddButton() {
-
-  return (
-    <>
-    <p>tet</p>
-    </>
-  )
-}
-
-export function deleteButton() {
-
-  return (
-    <>
     </>
   )
 }

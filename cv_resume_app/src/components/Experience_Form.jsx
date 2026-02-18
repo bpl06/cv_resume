@@ -1,37 +1,42 @@
-import { useState } from 'react';
 import { InputWithLabel } from './Form';
-import { updateItem, EXPERIENCE_KEY, getItem } from '../storage';
-export function ExperienceForm({ onChange, experience, setExperience, isVisible}) {
+import { EXPERIENCE_KEY } from '../storage';
+import { FormButtons } from './Form_Buttons';
+
+export function ExperienceForm({ onChange, onSubmit, form, setForm, draft, setDraft, setSelected }) {
 
   return ( 
     <>
-      {isVisible.experience && <div id='experience-form' className='form-wrapper'>
-        <h3>Experience</h3>
-        <form action='post' className='form'>
+        <form action='post' className='form' onSubmit={onSubmit}> 
           <InputWithLabel
             htmlFor='company'
             desc='Company'
-            value={experience.company ? experience.company : getItem(EXPERIENCE_KEY, 'company')}
-            onChange={(event) => onChange('company', event, EXPERIENCE_KEY, setExperience)}
+            value={draft.name}
+            onChange={(event) => onChange('name', event, EXPERIENCE_KEY, draft, setDraft)}
           />
           <InputWithLabel 
             htmlFor='position'
             desc='Position'
-            value={experience.position ? experience.position : getItem(EXPERIENCE_KEY, 'position')}
-            onChange={(event) => onChange('position', event, EXPERIENCE_KEY, setExperience)}
+            value={draft.position}
+            onChange={(event) => onChange('position', event, EXPERIENCE_KEY, draft, setDraft)}
           />
           <div className='form-field'>
-            <label htmlFor="responsibilities">Responisibilites</label>
+            <label htmlFor="responsibilities">Responisibilites</label> {/* START HERE - THIS DOES NOT RENDER IN FORM FIELDS AFTER SUBMIT */}
             <textarea
               id='responsibilities' 
               name='responsibilities' 
               placeholder='List Responsibilities'
-              value={experience.responsibilities ? experience.responsibilities : getItem(EXPERIENCE_KEY, 'responsibilities')}
-              onChange={(event) => onChange('responsibilities', event, EXPERIENCE_KEY, setExperience)}
+              value={draft.responsibilities}
+              onChange={(event) => onChange('responsibilities', event, EXPERIENCE_KEY, draft, setDraft)}
             />
           </div>
+          <FormButtons
+            form={form}
+            setList={setForm}
+            draft={draft}
+            setSelected={setSelected}
+            KEY={EXPERIENCE_KEY}
+          />
         </form>
-      </div>}
     </>
   )
 }

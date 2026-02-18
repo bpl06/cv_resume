@@ -3,10 +3,10 @@ import './App.css'
 import { PersonalForm } from './components/Personal_Form';
 import { EducationForm } from './components/Education_Form';
 import { ExperienceForm } from './components/Experience_Form';
-import { updateArrayItem, updateItem, getArray, EDUCATION_KEY } from './storage';
+import { updateArrayItem, updateItem, getArray, EDUCATION_KEY, EXPERIENCE_KEY } from './storage';
 import { Preview } from './components/Preview';
 import { Navbar } from './components/Navbar';
-import { EducationList } from './components/Education_List';
+import { FormList } from './components/Form_List';
 
 function App() {
   const [personal, setPersonal] = useState({
@@ -15,20 +15,24 @@ function App() {
     phone: ''
   })
 
-  const [experience, setExperience] = useState({
-    company: '',
-    position: '',
-    responsibilities: ''
-  })
+  const [experience, setExperience] = useState(getArray(EXPERIENCE_KEY));
 
   const [education, setEducation] = useState(getArray(EDUCATION_KEY));
 
   const [draftEducation, setDraftEducation] = useState({
-    school: '',
+    name: '',
     degree: '', 
     startDate: '',
     endDate: ''
   })
+
+  const [draftExperience, setDraftExperience] = useState({
+    name: '',
+    position: '',
+    responsibilities: ''
+  })
+
+  const [selected, setSelected] = useState(null);
 
   const [isVisible, setIsVisible] = useState({ //need to make education the educationList and not EducationForm
     personal: true,
@@ -63,6 +67,7 @@ function App() {
       [prop2]: false,
       [prop3]: false
     }))
+    setSelected(false)
   }
 
 
@@ -83,23 +88,36 @@ function App() {
             setPersonal={setPersonal}
             isVisible={isVisible}
           />
-          {isVisible.education && <div id='education-form' className="form-wrapper">
+           {isVisible.education && <div id='education-form' className="form-wrapper">
             <h2>Education</h2>
-              <EducationList
+              <FormList
+              FormComponent={EducationForm}
               onChange={handleArrayChange}
-              education={education}
-              draftEducation={draftEducation}
-              setDraftEducation={setDraftEducation}
-              setEducation={setEducation}
-              isVisible={isVisible}
+              form={education}
+              draft={draftEducation}
+              setDraft={setDraftEducation}
+              setForm={setEducation}
+              selected={selected}
+              setSelected={setSelected}
+              KEY={EDUCATION_KEY}
+              emptyDraft={{id: '', name: '', degree: '', startDate: '', endDate: ''}}
               />
           </div>}
-          <ExperienceForm
-            onChange={handleChange}
-            experience={experience}
-            setExperience={setExperience}
-            isVisible={isVisible}
-          />
+          {isVisible.experience && <div id='experience-form' className='form-wrapper'>
+          <h3>Experience</h3>
+              <FormList
+              FormComponent={ExperienceForm}
+              onChange={handleArrayChange}
+              form={experience}
+              draft={draftExperience}
+              setDraft={setDraftExperience}
+              setForm={setExperience}
+              selected={selected}
+              setSelected={setSelected}
+              KEY={EXPERIENCE_KEY}
+              emptyDraft={{id: '', name: '', position: '', responsibilities: ''}}
+              />
+          </div>}
         </div>
         <div className='preview-container'>
           <Preview
@@ -107,7 +125,6 @@ function App() {
           experience={experience}
           education={education}
           />
-
         </div>
       </div>
     </>
