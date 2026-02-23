@@ -1,31 +1,40 @@
 #root {
-  margin: 10px;
   text-align: center;
 }
 
 body {
   margin: 0;
+  width: 100%;
 }
 
 .main-container {
   display: grid;
-  grid-template-columns: 0.01fr .2fr 816px;
+  grid-template-columns: 0.05fr .3fr 1fr;
 }
 
 .nav-container {
   grid-column: 1/2;
   display: flex;
   flex-direction: column;
-  background-color: navy;
+  background-color: #272932;
 }
 
 .form-container {
   grid-column: 2/3;
-  background-color: peru;
-
+  background-color: #0B1429;
 }
 .preview-container {
+  background-image: url('../src/assets/images/abstract-dark-wood-lo-3840x2160.jpg');
+  background-size: cover;
+  display: flex;
   background-color: white;
   grid-column: 3/4;
+  justify-content: center;
+  align-items: center;
 }
 
+@media (min-width: 1024px) {
+  .form-container {
+    width: 350px
+  }
+}

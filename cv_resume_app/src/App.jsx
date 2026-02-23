@@ -120,11 +120,14 @@ function App() {
           </div>}
         </div>
         <div className='preview-container'>
-          <Preview
-          personal={personal}
-          experience={experience}
-          education={education}
-          />
+          <div className='preview'>
+            <Preview
+            personal={personal}
+            experience={experience}
+            education={education}
+            />
+          </div>
+          
         </div>
       </div>
     </>

@@ -1,7 +1,15 @@
 .preview-container {
   display: grid;
   grid-template-rows: .5fr 1fr, 1fr;
-  padding: 30px;
+  width: 100%;
+}
+
+.preview {
+  margin: 25px;
+  width: 180mm;
+  height: 267mm;
+  padding: 48px;
+  background-color: white;
 }
 
 .preview-text {
@@ -15,10 +23,27 @@
 
 .resume-container {
   display: flex;
-
+  /* grid-template-rows: .01fr, 1fr; */
 
   align-items: start;
   justify-content: start;
+}
+
+/* START HERE, MAKE IT LOOK PRETTY PLEASE!! */
+
+.resume-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* 
+.resume-header {
+  grid-row: 1 / 2;
+} */
+
+.entry-names {
+
 }
 
 hr {
@@ -26,5 +51,19 @@ hr {
   height: 1px; /* Set the height (thickness) */
   background-color: #333; /* Set the color */
   width: 100%; /* Set the width (e.g., 50% of its container) */
-  margin: 20px auto; /* Center the line horizontally with margin */
+  margin: 40px auto; /* Center the line horizontally with margin */
+}
+
+
+
+@media (min-width: 600px) {
+  .preview-container {
+    scale: 0.8;
+  }
+}
+
+@media (min-width: 1024px) {
+  .preview-container {
+    scale: 1;
+  }
 }

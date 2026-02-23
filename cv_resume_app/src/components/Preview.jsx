@@ -17,18 +17,25 @@ export function Preview({ personal, experience, education}) {
           {personal.phone ? personal.phone : getItem(PERSONAL_KEY, 'phone')}
         </p>
       </div>
+              <hr></hr>
       <div className='resume-container'>
         <div className='resume-header'>
           <h1 className='header-text'>Education</h1>
         </div>
-        <hr></hr>
+
         <div className='resume-section'>
           {education.map(x => 
             <>
-              <p key={crypto.randomUUID()} className="preview-text">{x.name}</p>
-              <p key={crypto.randomUUID()} className="preview-text">{x.degree}</p>
-              <p key={crypto.randomUUID()} className="preview-text">{x.startDate}</p>
-              <p key={crypto.randomUUID()} className="preview-text">{x.endDate}</p>
+              <div className='resume-entry'>
+                <div className='entry-names'>
+                  <p key={crypto.randomUUID()} className="preview-text">{x.name}</p>
+                  <p key={crypto.randomUUID()} className="preview-text">{x.degree}</p>
+                </div>
+                <div className='entry-dates'>
+                  <p key={crypto.randomUUID()} className="preview-text">{x.startDate}</p>
+                  <p key={crypto.randomUUID()} className="preview-text">{x.endDate}</p>
+                </div>
+              </div>
             </>
           )}
       </div>

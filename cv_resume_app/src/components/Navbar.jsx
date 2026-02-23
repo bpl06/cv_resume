@@ -1,13 +1,14 @@
 import personalSvg from '../assets/images/personal.svg';
 import educationSvg from '../assets/images/school.svg';
 import workSvg from '../assets/images/work.svg';
+import '../styles/nav.css'
 import { useState } from 'react';
 
 
 export function Navbar({ toggleVisible }) {
 
   return (
-    <nav className='icon-container'>
+    <nav className='nav-container'>
       <a href="#personal" className="icon-container">
         <img src={personalSvg} className="nav-icon" alt="personal" onClick={() => (toggleVisible('personal', 'education', 'experience'))}/>
       </a>
