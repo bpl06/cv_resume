@@ -6,17 +6,31 @@ import { useState } from 'react';
 
 
 export function Navbar({ toggleVisible }) {
+  const [isHover, setIsHover] = useState(null);
+
+  const handleMouseEnter = () => {
+    setIsHover(true);
+  }
+
+  const handleMouseExit = () => {
+    setIsHover(false)
+  }
+
 
   return (
     <nav className='nav-container'>
-      <a href="#personal" className="icon-container">
-        <img src={personalSvg} className="nav-icon" alt="personal" onClick={() => (toggleVisible('personal', 'education', 'experience'))}/>
+      <a href="#personal" className="icon-container" 
+        onClick={() => (toggleVisible('personal', 'education', 'experience'))}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseExit}  
+      >
+        <img src={personalSvg} className="nav-icon" alt="personal"/>
       </a>
-      <a href="#education" className='icon-container'>
-        <img src={educationSvg} className="nav-icon" alt="education" onClick={() => (toggleVisible('education', 'personal', 'experience'))}/>
+      <a href="#education" className='icon-container' onClick={() => (toggleVisible('education', 'personal', 'experience'))}>
+        <img src={educationSvg} className="nav-icon" alt="education"/>
       </a>
-      <a href="#experience" className="icon-container">
-        <img src={workSvg} className="nav-icon" alt="work" onClick={() => (toggleVisible('experience', 'personal', 'education'))}/>
+      <a href="#experience" className="icon-container" onClick={() => (toggleVisible('experience', 'personal', 'education'))}>
+        <img src={workSvg} className="nav-icon" alt="work"/>
       </a>
     </nav>
   )

@@ -16,18 +16,18 @@ export function setInitialStorage() {
     {
       id: crypto.randomUUID(),
       display: true,
-      name: 'Kings Canyon',
-      degree: 'asdf', 
-      startDate: 'asdf',
-      endDate: 'asdf'
+      name: 'Harvard University',
+      degree: 'Bachelor of Arts (A.B.)', 
+      startDate: '8/27/1980',
+      endDate: '4/24/1984'
     },
     {
       id: crypto.randomUUID(),
       display: true,
-      name: 'Storm Point',
-      degree: 'Goober', 
-      startDate: '1234',
-      endDate: '1895'
+      name: 'Yale University',
+      degree: 'Doctor of Philosophy (Ph.D.)', 
+      startDate: '8/14/1984',
+      endDate: '5/15/1988'
     },
   ]))
   }
@@ -37,7 +37,9 @@ export function setInitialStorage() {
       display: true,
       name: 'Burger King',
       position: 'The King',
-      responsibilities: 'Run shit on the daily'
+      startDate: '2/13/1990',
+      endDate: 'current',
+      responsibilities: 'Worked as a Crew Member at Burger King, delivering fast and friendly customer service in a high-volume quick-service environment. Accurately took and processed customer orders using a POS system and drive-thru headset, prepared food according to company quality and safety standards, and maintained cleanliness of kitchen, dining, and service areas. Handled cash and electronic payments with accuracy, restocked supplies to support efficient operations, and collaborated with team members to meet speed-of-service and customer satisfaction goals while following all food safety and workplace procedures.'
     }]))
   }
 } 

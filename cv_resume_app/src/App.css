@@ -9,7 +9,7 @@ body {
 
 .main-container {
   display: grid;
-  grid-template-columns: 0.05fr .3fr 1fr;
+  grid-template-columns: 0.04fr .25fr 1fr;
 }
 
 .nav-container {

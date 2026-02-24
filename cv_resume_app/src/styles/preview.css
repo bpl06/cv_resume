@@ -17,8 +17,11 @@
 }
 
 .header-text {
+  display: flex;
   color: black;
   font-size: 20px;
+  margin: 0;
+  justify-self: baseline;
 }
 
 .resume-container {
@@ -34,6 +37,8 @@
 .resume-section {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  flex-direction: column;
 }
 
 
@@ -42,8 +47,34 @@
   grid-row: 1 / 2;
 } */
 
-.entry-names {
+.entry-names, .entry-dates {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
 
+.preview-bold {
+  font-weight: bold;
+}
+
+.preview-italic {
+  font-style: italic;
+}
+
+.resume-entry {
+  display: flex;
+  justify-content: space-between;
+}
+
+.preview-text {
+  margin: 0;
+}
+
+.preview-description {
+  text-align: left;
+  padding-top: 5px;
 }
 
 hr {
@@ -51,7 +82,7 @@ hr {
   height: 1px; /* Set the height (thickness) */
   background-color: #333; /* Set the color */
   width: 100%; /* Set the width (e.g., 50% of its container) */
-  margin: 40px auto; /* Center the line horizontally with margin */
+  margin: 0 auto; 
 }
 
 

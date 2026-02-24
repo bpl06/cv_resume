@@ -29,6 +29,8 @@ function App() {
   const [draftExperience, setDraftExperience] = useState({
     name: '',
     position: '',
+    startDate: '',
+    endDate: '',
     responsibilities: ''
   })
 
