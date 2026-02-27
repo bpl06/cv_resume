@@ -2,11 +2,124 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 10px;
 }
 
-input, textarea {
-  width: 80%;
+input {
+  width: 100%;
   height: 30px;
   font-size: 15px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 5px;
+  background-color: #272932;
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid #6e93f2;
+}
+
+
+
+textarea {
+  width: 100%;
+  height: 250px;
+  font-size: 15px;
   border-radius: 2px;
+}
+
+label {
+  align-self: flex-start;
+}
+
+.formlist-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.entry-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.form {
+  margin-top: 10px;
+}
+
+.form-header {
+  font-size: 25px;
+}
+
+.form-field {
+  display: flex;
+  justify-self: center;
+  width: 80%;
+}
+
+.formlist-button {
+  display: flex;
+  width: 50%;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  background-color: #111d3b;
+  padding: 0;
+}
+
+.formlist-button:hover {
+  background-color: #283d72;
+}
+
+.delete-svg {
+  color: silver;
+}
+
+.add-button-container {
+
+}
+
+:where(#add-button) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+  border: none;
+  padding: 0;
+  margin-top: 10px;
+  color: green;
+  background-color: #0B1429;
+}
+
+#add-button:hover {
+  color: lightgreen;
+}
+
+.svg-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.delete-svg:hover {
+  color: red;
+}
+
+.delete-button {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  background: none;
+  border: none;
+  padding: 0;
+  width: 25px;
+  height: 25px;  
+
+}
+
+button {
+  cursor: pointer;
 }

@@ -20,7 +20,8 @@
   display: flex;
   color: black;
   font-size: 20px;
-  margin: 0;
+  margin-top: 50px;
+  margin-bottom: 0;
   justify-self: baseline;
 }
 
@@ -54,6 +55,17 @@
   padding-bottom: 5px;
   padding-top: 5px;
 }
+/* START HERE entry-names for responsibilites are squishing the entry dates for the responsibilites section in preview page.  */
+.entry-dates { 
+  /* max-width: 50%; */
+  position: relative;
+}
+
+.preview-date {
+  position: absolute;
+  right: 0px;
+  white-space: nowrap;
+}
 
 .preview-bold {
   font-weight: bold;
@@ -66,6 +78,7 @@
 .resume-entry {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .preview-text {

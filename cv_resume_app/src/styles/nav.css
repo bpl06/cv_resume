@@ -22,10 +22,14 @@
 }
 
 .icon-container:hover {
-  background-color: #0B1429;
+  background-color: #283d72;
 }
 
 .nav-container {
   display: flex;
   align-items: center;
+}
+
+.nav-selected {
+  background-color: #0B1429;
 }

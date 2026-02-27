@@ -4,3 +4,13 @@ export const collapseList = (id, state, stateUpdater) => {
   )
   stateUpdater(newState)
 }
+
+export const hideAddButton = (value) => {
+  const element = document.getElementById('add-button');
+  value ? element.classList.add('hide') : element.classList.remove('hide');
+}
+
+export const navSelected = (value, id) => {
+  const element = document.getElementById(id);
+  value ? element.classList.add('nav-selected') : element.classList.remove('nav-selected');
+}

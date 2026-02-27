@@ -1,3 +1,4 @@
+import { hideAddButton } from "../dom";
 import { setArrayItem, updateObject } from "../storage";
 
 export function FormButtons({ setList, draft, setSelected, KEY }) {
@@ -10,7 +11,8 @@ export function FormButtons({ setList, draft, setSelected, KEY }) {
         ...item,
         display: true
       }))
-    )  
+    )
+    hideAddButton(false);
   }
 
   const handleSubmit = (event) => {
@@ -40,6 +42,7 @@ export function FormButtons({ setList, draft, setSelected, KEY }) {
         display: true
       }))
     )
+    hideAddButton(false);
   }
   
   return (
@@ -52,7 +55,7 @@ export function FormButtons({ setList, draft, setSelected, KEY }) {
       <button className="submit-button" type="submit"
       onClick={(event) => (handleSubmit(event))}
       >
-      Submit
+      Save
       </button>
     </>
   )

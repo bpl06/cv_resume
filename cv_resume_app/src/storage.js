@@ -6,9 +6,9 @@ export function setInitialStorage() {
   console.log('Initial Storage Set')
   if (!localStorage.getItem('personalInfo')) {
     localStorage.setItem('personalInfo', JSON.stringify({
-      name: '',
-      email: '',
-      phone: ''
+      name: 'Lil Wayne',
+      email: 'weezy@ymcmb.com',
+      phone: '504-420-6969'
     }))
   }
   if (!localStorage.getItem('educationInfo')) {
@@ -32,15 +32,26 @@ export function setInitialStorage() {
   ]))
   }
   if (!localStorage.getItem('experienceInfo')) {
-    localStorage.setItem('experienceInfo', JSON.stringify([{
-      id: crypto.randomUUID(),
-      display: true,
-      name: 'Burger King',
-      position: 'The King',
-      startDate: '2/13/1990',
-      endDate: 'current',
-      responsibilities: 'Worked as a Crew Member at Burger King, delivering fast and friendly customer service in a high-volume quick-service environment. Accurately took and processed customer orders using a POS system and drive-thru headset, prepared food according to company quality and safety standards, and maintained cleanliness of kitchen, dining, and service areas. Handled cash and electronic payments with accuracy, restocked supplies to support efficient operations, and collaborated with team members to meet speed-of-service and customer satisfaction goals while following all food safety and workplace procedures.'
-    }]))
+    localStorage.setItem('experienceInfo', JSON.stringify([
+      {
+        id: crypto.randomUUID(),
+        display: true,
+        name: 'Burger King',
+        position: 'The King',
+        startDate: '2/13/1990',
+        endDate: 'current',
+        responsibilities: 'In addition to cashier responsibilities, demonstrated elite verbal agility and lyrical dominance, widely recognized (by self and possibly others) as the greatest rapper alive. Freestyled daily over the rhythmic beeping of the registers, dropped bars about double cheeseburgers and hustle mentality, and maintained impeccable flow under pressure — proving that while customers may “Have It Your Way,” the mic is handled only one way: flawlessly.'
+      },
+      { 
+        id: crypto.randomUUID(),
+        display: true,
+        name: 'McDonalds',
+        position: 'MC Ronald',
+        startDate: '5/17/1980',
+        endDate: '1/12/1987',
+        responsibilities: 'In addition to grill mastery and order precision at McDonalds, revolutionized the fast-food rapper industry with unmatched lyrical innovation and drive-thru dominance. Widely regarded (internally and without dispute) as the greatest rapper alive, delivered high-performance freestyles over the symphony of fryer timers and receipt printers, transforming the lunch rush into a live mixtape release party. Dropped platinum-level bars about Big Macs, generational wealth, and the strategic hustle behind perfectly salted fries, all while maintaining composure under peak McFlurry turbulence. Proved that while billions may be served, only one can truly serve the beat — flawlessly, efficiently, and with a side of rhythm.'
+    }
+  ]))
   }
 } 
 
@@ -86,6 +97,14 @@ export function updateObject(key, updatedObject, id) {
     x.id === id ? updatedObject : x
   )
   localStorage.setItem(key, JSON.stringify(newArr))
+}
+
+export function deleteObject (key, id) {
+  let item = JSON.parse(localStorage.getItem(key))
+  const newItem = item.filter(x =>
+    x.id !== id
+  )
+  localStorage.setItem(key, JSON.stringify(newItem))
 }
 
 export function setArrayItem(key, newObj) {

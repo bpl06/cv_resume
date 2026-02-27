@@ -7,14 +7,15 @@ export function Preview({ personal, experience, education}) {
   return (
     <>
       <div className='personal-info'>
-        <p className='preview-text'>
+        <h1 className='preview-text'>
           {personal.name ? personal.name : getItem(PERSONAL_KEY, 'name')}
+        </h1>
+        <p className='preview-text'>
+          {personal.email ? personal.email : getItem(PERSONAL_KEY, 'email')} | {personal.phone ? personal.phone : getItem(PERSONAL_KEY, 'phone')}
+          
         </p>
         <p className='preview-text'>
-          {personal.email ? personal.email : getItem(PERSONAL_KEY, 'email')} 
-        </p>
-        <p className='preview-text'>
-          {personal.phone ? personal.phone : getItem(PERSONAL_KEY, 'phone')}
+          
         </p>
       </div>
       <h1 className='header-text'>Education</h1>
@@ -49,7 +50,7 @@ export function Preview({ personal, experience, education}) {
                   <p key={crypto.randomUUID()} className={`preview-text preview-description`}>{x.responsibilities}</p>
                 </div>
                 <div className='entry-dates'> {/* START HERE, ITS PLACING X.ENDDATE ON A NEW LINE BAD!!!} */}
-                  <p key={crypto.randomUUID()} className="preview-text">{x.startDate} - {x.endDate}</p>
+                  <p key={crypto.randomUUID()} className="preview-text preview-date">{x.startDate} - {x.endDate}</p>
                 </div>
               </div>  
             </>
