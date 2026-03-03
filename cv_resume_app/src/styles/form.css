@@ -19,7 +19,12 @@ input:focus {
   border: 1px solid #6e93f2;
 }
 
-
+.form-close-submit-button {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+}
 
 textarea {
   width: 100%;
@@ -118,6 +123,24 @@ label {
   width: 25px;
   height: 25px;  
 
+}
+
+.close-button, .submit-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 0;
+  gap: 2.5px;
+}
+
+.close-button:hover {
+  color: red
+}
+
+.submit-button:hover {
+  color: green;
 }
 
 button {

@@ -7,7 +7,7 @@ import { updateArrayItem, updateItem, getArray, EDUCATION_KEY, EXPERIENCE_KEY } 
 import { Preview } from './components/Preview';
 import { Navbar } from './components/Navbar';
 import { FormList } from './components/Form_List';
-import { navSelected } from './dom';
+import { formListVisible, navSelected } from './dom';
 
 function App() {
   const [personal, setPersonal] = useState({
@@ -60,7 +60,7 @@ function App() {
     }))
   }
   
-  const toggleVisible = (property, prop2, prop3) => { //is changing isVisible properties but is not updating DOM. Fixed----
+  const toggleVisible = (property, prop2, prop3) => { 
     setIsVisible((prev) => ({
       ...prev,
       [property]: true,
@@ -71,7 +71,7 @@ function App() {
     navSelected(true, property);
     navSelected(false, prop2);
     navSelected(false, prop3)
-
+    formListVisible(setEducation, setExperience)
   }
 
 

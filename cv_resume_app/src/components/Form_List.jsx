@@ -4,7 +4,7 @@ import { collapseList, hideAddButton } from "../dom"
 export function FormList({ onChange, onSubmit, form, setForm, draft, setDraft, selected, setSelected, FormComponent, emptyDraft, KEY, label }) {
 
   const handleClick = (id) => {
-    collapseList(id, form, setForm) 
+    collapseList(form, setForm) 
     if (id === 'add-button') {
       setDraft(emptyDraft)
     }

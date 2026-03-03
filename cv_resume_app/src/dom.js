@@ -1,6 +1,6 @@
-export const collapseList = (id, state, stateUpdater) => {
+export const collapseList = (state, stateUpdater) => {
   const newState = state.map(x => 
-    x.id === id ? {...x, display: true } : {...x, display: false}
+    x = {...x, display: false}
   )
   stateUpdater(newState)
 }
@@ -13,4 +13,15 @@ export const hideAddButton = (value) => {
 export const navSelected = (value, id) => {
   const element = document.getElementById(id);
   value ? element.classList.add('nav-selected') : element.classList.remove('nav-selected');
+}
+
+export const formListVisible = (...stateUpdater) => {
+  stateUpdater.forEach(
+    updater(prev => 
+      prev.map(x => ({
+        ...x, 
+        display: true
+      }))
+    )
+  )
 }
