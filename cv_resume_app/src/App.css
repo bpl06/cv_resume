@@ -9,7 +9,7 @@ body {
 
 .main-container {
   display: grid;
-  grid-template-columns: 0.04fr .25fr 1fr;
+  grid-template-columns: 0.04fr 0.25fr 1fr;
 }
 
 .nav-container {
@@ -21,10 +21,10 @@ body {
 
 .form-container {
   grid-column: 2/3;
-  background-color: #0B1429;
+  background-color: #0b1429;
 }
 .preview-container {
-  background-image: url('../src/assets/images/abstract-dark-wood-lo-3840x2160.jpg');
+  background-image: url("../src/assets/images/abstract-dark-wood-lo-3840x2160.jpg");
   background-size: cover;
   display: flex;
   background-color: white;
@@ -35,7 +35,7 @@ body {
 
 @media (min-width: 1024px) {
   .form-container {
-    width: 350px
+    width: 350px;
   }
 }
 

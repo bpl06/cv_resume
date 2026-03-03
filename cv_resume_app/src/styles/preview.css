@@ -1,6 +1,8 @@
 .preview-container {
   display: grid;
-  grid-template-rows: .5fr 1fr, 1fr;
+  grid-template-rows:
+    0.5fr 1fr,
+    1fr;
   width: 100%;
 }
 
@@ -42,13 +44,13 @@
   flex-direction: column;
 }
 
-
 /* 
 .resume-header {
   grid-row: 1 / 2;
 } */
 
-.entry-names, .entry-dates {
+.entry-names,
+.entry-dates {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -56,7 +58,7 @@
   padding-top: 5px;
 }
 /* START HERE entry-names for responsibilites are squishing the entry dates for the responsibilites section in preview page.  */
-.entry-dates { 
+.entry-dates {
   /* max-width: 50%; */
   position: relative;
 }
@@ -95,10 +97,8 @@ hr {
   height: 1px; /* Set the height (thickness) */
   background-color: #333; /* Set the color */
   width: 100%; /* Set the width (e.g., 50% of its container) */
-  margin: 0 auto; 
+  margin: 0 auto;
 }
-
-
 
 @media (min-width: 600px) {
   .preview-container {
